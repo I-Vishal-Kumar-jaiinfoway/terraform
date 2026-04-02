@@ -8,11 +8,12 @@ resource "google_compute_instance" "testing-vm-creation" {
   name         = "testing-vm-creation"
   machine_type = "e2-micro"
   zone         = "us-central1-a"
+  tags         = ["managed-by-intellibooks-agent"]
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-2204-lts"
-      size  = 10
+      image = "projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts"
+      size  = 20
       type  = "pd-balanced"
     }
   }
@@ -25,6 +26,4 @@ resource "google_compute_instance" "testing-vm-creation" {
   labels = {
     managed-by = "intellibooks-agent"
   }
-
-  tags = ["intellibooks-agent"]
 }
